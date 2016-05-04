@@ -4,72 +4,63 @@ Cell with predefined dna to be developed as 'backend', 'frontend' or both
 
 ## usage
 
-- `$ git clone https://github.com/outbounder/organic-stem-skeleton.git ./mypetproject`
-- `$ cd ./mypetproject`
-- `$ rm -rf ./.git`
-- `$ npm install`
-- modify `dna` folder and `package.json`
-- add any stack addons
-- `rm -rf ./upgrades`
-- `git init .`
+
+1. `$ git clone https://github.com/outbounder/organic-stem-skeleton.git ./mypetproject`
+1. `$ cd ./mypetproject`
+1. `$ rm -rf ./.git`
+1. `$ npm install`
+1. add any stack addons (run `$ angel stack list` for available options)
+1. `$ angel stack configure`
+1. `rm -rf ./upgrades`
+1. `git init .`
+
+___notice 1)___
+`angel` is organic command line assistant.
+Either install it locally via `npm install organic-angel -g` or run it via `node ./node_modules/.bin/angel`.
+
+___notice 2)___
+Running `$ angel help` will print all available commands to your disposal.
 
 ### stack addons
-
-#### release
-
-    $ node ./node_modules/.bin/angel stack use upgrades/release
-    $ node ./node_modules/.bin/angel release:setup
 
 #### server
 
 ##### emails support
 
-    $ node ./node_modules/.bin/angel stack use upgrades/server/emails-support
+    $ angel stack use emails-support
 
 ##### mongoose models
 
-    $ node ./node_modules/.bin/angel stack use upgrades/server/mongoose
+    $ angel stack use mongoose
 
 ##### mongodb stored cookie based sessions
 
-    $ node ./node_modules/.bin/angel stack use upgrades/server/mongo-sessions
-
-#### client
+    $ angel stack use mongo-sessions
 
 ##### server rendered pages
 
 ###### ejs templates
 
-    $ node ./node_modules/.bin/angel stack use upgrades/client/ejs-pages
+    $ angel stack use ejs-pages
 
 ###### jade templates
 
-    $ node ./node_modules/.bin/angel stack use upgrades/client/jade-pages
+    $ angel stack use jade-pages
 
-##### Assetpipelines
+#### devtools
 
-###### less
+Refer to [devtools](https://github.com/outbounder/organic-stem-devtools) or `$ angel stack list`
 
-    $ node ./node_modules/.bin/angel stack use upgrades/client/assetpipeline-less
-
-###### webpack
-
-    $ node ./node_modules/.bin/angel stack use upgrades/client/assetpipeline-webpack
-
-###### browserify
-
-    $ node ./node_modules/.bin/angel stack use upgrades/client/assetpipeline-browserify
-
-##### SPAs
+#### frontend SPAs
 
 ###### backbone + jade templates
 
-    $ node ./node_modules/.bin/angel stack use upgrades/client/apps/jade-backbone
+    $ angel stack use jade-backbone
 
 ###### angular1
 
-    $ node ./node_modules/.bin/angel stack use upgrades/client/apps/angular1
+    $ angel stack use angular1
 
-###### react + flux + es6/7 client side
+###### react + flux
 
-    $ node ./node_modules/.bin/angel stack use upgrades/client/apps/react-flux
+    $ angel stack use react-flux

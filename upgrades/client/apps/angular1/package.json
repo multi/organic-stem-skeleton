@@ -1,9 +1,0 @@
-{
-  "scripts": {
-    "install": "./node_modules/.bin/bower install"
-  },
-  "dependencies": {
-    "bower": "~1.3.5",
-    "ng-annotate-loader": "~0.0.10"
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "webpack": "dna/client/webpack.config.js",
-  "watchjs": {
-    "pattern": "/**/*.bundle.js?(x)"
-  },
-  "buildjs": {
-    "pattern": "/**/*.bundle.js?(x)"
-  }
-}
