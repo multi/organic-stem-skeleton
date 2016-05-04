@@ -1,59 +1,99 @@
-# stem skeleton
+# stem skeleton v0.1
 
-Cell with predefined dna having the following abilities:
+Cell with predefined dna to be developed as 'backend', 'frontend' or both
 
-* dual architecture - api & client site
-* expressjs server at port 1337 configured with
-  * body-parser
-  * cookie-parser
-  * views at /context/pages
-  * uploads handling
-  * connect-mongo sessions
-  * api & site responders
-  * js/css cache busting based on project's version
-* autoload and mount api action handlers from /context/routes/api
-* autoload and mount site action handlers from /context/routes/site
-* autoload and mount static pages from /context/pages
-* in development 
-  * watch all javascripts and bundle them from /context/client to /public/js
-  * watch all stylesheets and bundle them from /context/styles to /public/css
-  * serve static files from /public and /build folders to /public url
-  * continuous delivery
-    * development, test and staging modes
-    * full remote process management (install, build, start, restart, upgrade, uninstall)
+## use
 
-## usage
+1. `$ mkdir ./mypetproject`
+1. `$ cd ./mypetproject`
+1. `$ npm install outbounder/organic-stem-skeleton angelscripts-stack-use`
+1. `$ angel stack use core`
+1. `$ mv ./.npmignore ./.gitignore` [needed because of this](https://github.com/npm/npm/issues/11061)
+1. add any stack upgrades (run `$ angel stack list` for available options)
+1. `$ angel stack configure`
+1. `git init . && git add --all && git commit`
 
-- `git clone https://github.com/outbounder/organic-stem-skeleton.git ./mypetproject`
-- `cd ./mypetproject`
-- `rm -rf ./.git`
-- `npm install`
-- `node index.js`
+___notice 1)___
+`angel` is organic command line assistant.
+Either install it via `npm install organic-angel -g` or install it locally and always run via `node ./node_modules/.bin/angel`.
 
-### optional perks
+___notice 2)___
+Running `$ angel help` will print all available commands to your disposal.
 
-#### use jade templates and backbone/jquery on the frontend
+### stack upgrades
 
-    $ node ./node_modules/.bin/angel stack add upgrades/jade-backbone
+#### server
 
-#### use ejs serverside templates and angularjs
+##### emails support
 
-    $ node ./node_modules/.bin/angel stack add upgrades/ejs-angular
+    $ angel stack use emails-support
 
-#### use reactJS with flux on the frontend
+##### mongoose models
 
-    $ node ./node_modules/.bin/angel stack add upgrades/react-flux
+    $ angel stack use mongoose
 
-#### use jade email templates and support email delivery via plasma
+##### mongodb stored cookie based sessions
 
-    $ node ./node_modules/.bin/angel stack add upgrades/emails-support
+    $ angel stack use mongo-sessions
 
-### cleanup before initial commit
+##### server rendered pages
 
-* Delete the following files manually once not needed:
+###### ejs templates
 
-  * `context/pages/**/*.jade`
-  * `upgrades` folder
+    $ angel stack use ejs-pages
 
-* Modify `dna` folder contents accordingly to your needs.
-* Modify `package.json` contents accordingly to your needs.
+###### jade templates
+
+    $ angel stack use jade-pages
+
+#### devtools
+
+Refer to [devtools](https://github.com/outbounder/organic-stem-devtools) or `$ angel stack list`
+
+    $ npm install organic-stem-devtools
+    $ angel stack use devtools
+    ... any other devtools stack upgrades (see them via $ angel stack list)
+
+#### frontend SPAs
+
+###### backbone + jade templates
+
+    $ angel stack use jade-backbone
+
+###### angular1
+
+    $ angel stack use angular1
+
+###### react + flux
+
+    $ angel stack use react-flux
+
+
+## how to run tests
+
+1. define `mock-stemskeleton.json` into the repo's root folder
+
+  ```
+  $ cd organic-stem-skeleton
+  $ echo '"/full/path/to/stem-seed"' > mock-stemskeleton.json
+  ```
+
+2. **optimize performance** and install all stack upgrades
+
+  ```
+  $ cd /full/path/to/stem-seed
+  $ npm install angelscripts-stack-use
+  $ npm link /full/path/to/organic-stem-skeleton
+  $ angel stack use core
+  $ npm install orgainc-stem-devtools
+  $ angel stack use devtools
+  $ angel stack use devtools-client
+  $ angel stack use devtools-less
+  $ angel stack use devtools-webpack
+  $ angel stack use devtools-assets
+  $ git init . && git add --all && git commit
+  $ angel stack use angular1
+  $ angel stack use jade-backbone
+  $ angel stack use react-flux
+  $ git reset --hard HEAD
+  ```
